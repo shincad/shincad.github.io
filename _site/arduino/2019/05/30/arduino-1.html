@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>arduino란 무엇인가?</title>
+  <meta name="description" content="아주 옛날 신입사원 시절, 선배에게 모르는 것을 물어보면서 하드웨어를 만들고, 코딩을 하고 테스트 환경을 만들면서 밤을 새웠던 적이 있었다. 그 때는 개발 키트나 이런 환경이 많지 않았고, 자료도 많지 않아서 도서관에 가서 자료를 찾거나, 지인들에게 물어가면서 개발을 하곤 했다. ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/arduino/2019/05/30/arduino-1.html">
+  <link rel="alternate" type="application/atom+xml" title="shincad's blog" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> I think, therefore I am. </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/shincad" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/shinzzan" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script id="dsq-count-scr" src="//shincad.disqus.com/count.js" async></script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">arduino란 무엇인가?</h1>
+    <p class="post-meta">May 30, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <p>아주 옛날 신입사원 시절, 선배에게 모르는 것을 물어보면서 하드웨어를 만들고, 코딩을 하고 테스트 환경을 만들면서 밤을 새웠던 적이 있었다. 그 때는 개발 키트나 이런 환경이 많지 않았고, 자료도 많지 않아서 도서관에 가서 자료를 찾거나, 지인들에게 물어가면서 개발을 하곤 했다. (그 흔한 TTL 소자 책도 보물로 여기던 시절이었다.)</p>
+
+<p>하지만, 요즘은 정말로 인터넷에서 자료를 찾으면 뭐든 어디서든 찾을 수 있다. 정말로 좋은 세상이다.</p>
+
+<p><img width="720" alt="arduino uno" src="https://user-images.githubusercontent.com/20354551/58608433-7b084180-82de-11e9-8801-fb2f34721a41.jpg" /></p>
+
+<p>arduino는 실무를 하던 도중 알게된 것이지만, 취미생활로 이것저것 많이 해 보고 있다. 정말로 좋은 장난감이다.</p>
+
+<p>예전 공업고등학교에서 강의를 했던 자료를 바탕으로 조금씩 arduino에 대한 이야기를 하고자 한다.</p>
+
+
+  </article>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key=/arduino/2019/05/30/arduino-1 data-title=arduino란 무엇인가? data-url=I think, therefore I am.//arduino/2019/05/30/arduino-1.html></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pawpaw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+<div id="disqus_thread"></div>
+	<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+	var d = document, s = d.createElement('script');
+	s.src = 'https://shincad.disqus.com/embed.js';
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  
+                            
+  <br>
+	@2019 shincad
+</footer>
+
+    
+  </body>
+
+</html>

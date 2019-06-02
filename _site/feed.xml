@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shincad's blog</title>
+    <description>신정욱의 기술 블로그 입니다.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 02 Jun 2019 22:12:51 +0900</pubDate>
+    <lastBuildDate>Sun, 02 Jun 2019 22:12:51 +0900</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>LED 그냥 켜면 되는거 아냐?</title>
+        <description>&lt;p&gt;LED하나 깜박거리는 거 해 봤다. 속도도 조절해 봤다. 뭔가 뿌듯하다. 근데, 더 이상 할께 없다… 하지만 여기서 끝내면 안된다. 좀 더 건설적인 뭔가 해 봐야 하는데… 근데, LED는 그냥 +,-구분해서 불만 들어오게 하면 되는 거 아닌가?&lt;/p&gt;
+
+&lt;p&gt;맞다. 불면 켜면 된다. 근데 그냥 연결하면 안된다. 땜쟁이는 대학에서 전기공학을 전공했다. 신입생 때 그냥 LED 연결하면 되는 줄 알았다. 근데, 첨에 나오다가 갑자기 불이 안 들어온다. 새거 다시 연결하면 첨엔 아주 밝게 잘 나온다. 또 안 나온다… 도대체 왜 이러는 걸까? 아마 다들 경험해 보신 분들 있으실 꺼다. 그냥 연결하면 안된다. 첨에는 내 몸 하나 불사르며 밝게 타오르다가, 결국 장렬히 전사한다. 계속 켜고 싶은데… 그게 안된다.&lt;/p&gt;
+
+&lt;p&gt;선배에게 물어보면, “야~ 저항 하나 걸어줘. 안 그러면 탄다.”라고 이야기 한다. 저항! 아 저항을 걸어줘야 하는구나. 근데 얼마를 걸어줘야 하지? 물어보면 선배들도 잘 모른다. “뭐 대충 470ohm하나 달아줘.”라고 이야기 한다. 툭하면 470. 무슨 동네 개 이름도 아니고. 아무도 제대로 알려주지 않는다. 생각해 보면 선배들도 이거 잘 몰랐다. 그냥 저항 걸어줘야 하니까 걸어준거다. 뭐야. 도대체 제대로 알려주지도 않고.&lt;/p&gt;
+
+&lt;p&gt;LED는 다이오드의 일종이다. 다들 들어봤을 것이다. 아래는 일반적인 LED의 특성을 표시해 놓은 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;622&quot; alt=&quot;스크린샷 2019-06-01 오후 8 00 24&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58747575-fa953c80-84a7-11e9-9cd4-746db84f9530.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;뭔가 무지하게 복잡하다. 머리 아프다. 근데, 다 볼 필요없다. 하나만 보면 된다. Forward Voltage! 다들 ohm의 법칙이라는 건 들어봤을꺼다. 수학 싫어하는데 왜 공식이냐고? 이 정도는 참고 하자. 별로 안 어렵다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;V = I x R (전압 = 전류 x 저항)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;전기공학에서는 가장 기본적인 공식이다. 모든 것은 이것에서 부터 출발한다. 근데 이거 가지고 어떻게 하냐고? 자 하나씩 보자.&lt;/p&gt;
+
+&lt;p&gt;위의 LED는 정격이 1.85V 일 때, If=20mA라고 되어 있다. 근데, 아두이노에서는 몇 볼트를 쓰는가? 5V다. 높다. 이대로 연결하면 환하게 불타오르고 죽는 건 당연하다. 에이 그럼 어떻하지? 위에서 말한 것처럼 저항을 걸어주면 된다. 한번 계산해 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;아두이노전압(5V) - LED정격(1.85V) = 3.15V&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;LED는 정격이 1.85V라고 위에 나와 있다. 그럼 나머지 3.15V는? 누군가가 소모해 줘야 한다. 안 그러면 타버린다. 누구에게 이 미션을 맡기지? 저항이다. 저항이 이걸 소비시켜 주면 되는 거다.&lt;/p&gt;
+
+&lt;p&gt;그러면 V = I x R에서 R = V / I로 변환 가능하다. 즉 저항 R = 3.15 / 0.02A(20mA) = 157.5 Ohm&lt;/p&gt;
+
+&lt;p&gt;이다. 이 저항을 걸어주면 LED는 딱 좋은 밝기로 아무 문제없이 밝게 나온다. 이렇게 애매한 저항값이 없다고? 그러면 대략 180Ohm 정도 걸어준다. (이래서 선배들이 이야기 한 대충이 나오는거다. 이유를 알고 대충 걸어 주는 것과 모르고 걸어주는 것은 완전히 다르다. 확실하게 알고 넘어가자.)&lt;/p&gt;
+
+&lt;p&gt;좀 어두우면, 130Ohm 정도 걸어주면 밝아진다. 너무 낮추면 타버리니, 적당히 해 주자. (저항값이 있으면 LED는 바로 나가지 않는다. 정격이 안 맞으면, 오래 쓰면 나간다.)&lt;/p&gt;
+
+&lt;p&gt;가전제품이나, 전자제품 중에 LED가 잘 나가는 제품이 있다. 이건 중국산 싸구려 LED를 썼거나, 설계 시 저항값을 잘못 책정한 결과라고 할 수 있다. (설마 대기업 연구소에서 이런 것도 못하리? 라고 생각하는 분들도 계시겠지만, 의외로 그런 엔지니어들 있다. 기본이 없는 엔지니어들..)&lt;/p&gt;
+
+&lt;p&gt;예제로 다른 것을 한번 풀어보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;forward Voltage : 2V , If = 10mA 인 LED가 있다. 12V 전압을 걸어줄 때 저항을 얼마짜리를 써야 하는지  서술하시오.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;요렇게 나오면, 하나씩 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58747772-ae97c700-84aa-11e9-9f74-6e77df08be49.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 그릴 수 있다. 잘 모르면 그려봐라. 제일 확실하다.&lt;/p&gt;
+
+&lt;p&gt;저항 값의 계산&lt;/p&gt;
+
+&lt;p&gt;우리가 아는 값 : 2V / 10mA&lt;/p&gt;
+
+&lt;p&gt;12V의 전압을 사용한다고 했으므로,&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;12V = Vr전압 + V led = V Batt가 된다.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;12V = Vr전압 + 2V&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Vr = 10V&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;결국 저항 R에 걸리는 전압은 10V가 된다. Ohm의 법칙을 써서 저항을 구하면,&lt;/p&gt;
+
+&lt;p&gt;R = V / I —&amp;gt; 10 / 0.01A(10mA) = 1000 Ohm 즉, 1KOhm을 사용하면 되는 거다.&lt;/p&gt;
+
+&lt;p&gt;또 급 피곤해졌다. 오늘은 여기까지. 오늘 밤에는 챔스리그 결승전인데, 손흥민 선발로 나오려나? (설마 포체티노 너, 모우라 쓰는 건 아니겠지?)&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Jun 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/arduino/2019/06/01/arduino-5.html</link>
+        <guid isPermaLink="true">http://localhost:4000/arduino/2019/06/01/arduino-5.html</guid>
+        
+        
+        <category>arduino</category>
+        
+      </item>
+    
+      <item>
+        <title>LED는 어떻게 깜박거리는 걸까?</title>
+        <description>&lt;p&gt;지금까지 그냥 예제 띄워서 로딩하고, 실행해 봤다. 이유도 모르고.&lt;/p&gt;
+
+&lt;p&gt;회사에서 업무 끝나고 자료를 작성해서 올리고(요건 windows), 집에 와서는 mac으로 작업한다. windows에서 했다가 mac에서 했다가… 땜쟁이도 헷갈린다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; alt=&quot;스크린샷 2019-06-01 오전 1 16 39&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58721054-d5a0bb00-840e-11e9-9545-70e5acd3458c.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자 하나씩 설명한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pinMode()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;아두이노 측면에는 많은 커넥터 구멍이 있다. 여기에는 많은 핀들이 연결되어 있다. 입력을 받을 수도, 출력을 내보낼 수도 있다. 요 핀들의 기능을 정의하는 함수이다.&lt;/p&gt;
+
+&lt;p&gt;함수는 다음과 같이 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pinMode(pin,mode);&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 pin은 지정된 핀 번호이다. 예를 들어 13번 핀을 사용하려면 13을 주면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mode&lt;/strong&gt; : 요건 지정된 핀을 입력으로 할 지, 출력으로 할 지 정하는 부분이다. &lt;strong&gt;INPUT,OUTPUT,INPUT_PULLUP&lt;/strong&gt; 이렇게 3가지 모드가 있다. INPUT으로 하면 입력, OUTPUT으로 하면 출력, INPUT_PULLUP으로 하면 입력이지만 풀업 input모드가 있다. pullup,pulldown에 대한 개념은 추후에 설명하기로 한다. 이것까지 여기서 설명하면 머리털 다 빠진다.&lt;/p&gt;
+
+&lt;p&gt;위의 예제를 보면, LED_BUILTIN을 핀 번호로 정하고, 모드를 출력으로 했다.&lt;/p&gt;
+
+&lt;p&gt;LED_BUILTIN은 arduino 내부의 지정된 파일 (궁금하면 찾아봐라. variant.h라는 헤더파일 안에 정의되어 있다. 초보자들은 일단 무시해도 된다. #define LED_BUILTIN   13&lt;/p&gt;
+
+&lt;p&gt;그래서 blink 예제를 실행하면 13번 LED가 깜박거리게 되는 것이다.&lt;/p&gt;
+
+&lt;p&gt;큰 줄기의 설명을 빼먹었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void setup()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;초기값을 정의하는 부분이다. 여기서 정의는 초기값은 처음 실행될 때, 한번만 수행이 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void loop()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;실제 수행되는 부분이다. 일반적인 C언어에서 main에 해당되는 부분이나, 약간 다르다. C언어에서 main부분은 무한루프를 지정해 주지 않으면 한번만 수행이 되나, loop는 무한루프로 계속 수행된다. (요부분도 초보자는 좀 어렵다. 그냥 loop부분에 프로그램을 넣으면 계속 실행된다고 우선 생각하자)&lt;/p&gt;
+
+&lt;p&gt;자, 다시 돌아가서,&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;digitalWrite(LED_BUILTIN,HIGH);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;delay(1000);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;digitalWrite(LED_BUILTIN,LOW);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;delay(1000);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;LED-BUILTIN은 13번핀으로 정의되어 있다고 했다. 13번 핀을 HIGH(5V)로 올린다. 실제 현장에서 사용하는 오실로스코프로 측정해보면 정말로 5V로 올라간다. (오실로스코프는 사실 일반인이나 초보자가 가지기에는 어려운 장비인데, 자연스럽게 말해 버렸다….)&lt;/p&gt;
+
+&lt;p&gt;delay(1000); 요건 1000ms이다. 즉, 1초 시간 지연함수 이다. 1초동안 아무것도 안하고 머물러 있는 구조이다.&lt;/p&gt;
+
+&lt;p&gt;digitalWrite(LED_BUILTIN,LOW);&lt;/p&gt;
+
+&lt;p&gt;자 여기서는 high로 올렸던 13번 핀을 LOW(0V)로 떨어뜨렸다.&lt;/p&gt;
+
+&lt;p&gt;delay(1000); 다시 1초동안 시간지연, 즉 그대로 멈춰라~!&lt;/p&gt;
+
+&lt;p&gt;다시 위에서부터 반복&lt;/p&gt;
+
+&lt;p&gt;즉, 1초마다 꺼졌다 켜졌다를 반복한다. 신기하지 않은가? (나만 그런가?) 공업고등학교 2,3학년 아이들에게 이런거 가르쳐보면 좋아하는 친구들은 참 좋아하지만, 전혀 흥미가 없는 친구들은 정말로 그 표정은…(정말로 가르쳐보면 절망적이다…)&lt;/p&gt;
+
+&lt;p&gt;있다가 새벽에 20세이하 월드컵 축구한다고 한다. 1시간 정도 남은 거 같은데, 좀 더 버티다가 보고 잘까나?&lt;/p&gt;
+
+&lt;p&gt;(웬지 그대로 잘 것 같은 느낌이다…)&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 01 Jun 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/arduino/2019/06/01/arduino-4.html</link>
+        <guid isPermaLink="true">http://localhost:4000/arduino/2019/06/01/arduino-4.html</guid>
+        
+        
+        <category>arduino</category>
+        
+      </item>
+    
+      <item>
+        <title>arduino uno, 프로그램은 어떻게 넣는거야?</title>
+        <description>&lt;p&gt;호환품이던지, 정품이던지 하나를 선택해서 샀다면, arduino uno를 드디어 하나 소유하게 된 것이다. 일단, 사기는 샀는데, 이걸 가지고 뭘 해야하나…는 걱정을 할 것이다. 다들 이거 가지고, 현관문도 제어하고, 음성인식도 하고, 카메라도 달고..&lt;/p&gt;
+
+&lt;p&gt;이런 많은 것들을 할 수는 있는데, 당장은 아무것도 할 수 없다. 그럴 능력까지 가려면 아직 멀었다. 단순하게 할 수 있는 것도 지금은 불가능한 상태이니..&lt;/p&gt;
+
+&lt;p&gt;일단, 아무것도 장착하지 않은 arduino uno 보드가 있으니, 통신부터 해보자. 돌아가는 지 안 돌아가는지 확인부터 해야하니까.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.arduino.cc/en/Main/Software&quot;&gt;arduino IDE program download&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 링크를 누르면 arduino IDE program을 다운로드 할 수 있다. 여기가면 각 O/S별로 다운을 받을 수 있다. (윈도우 사용자들은 windows installer를 받아라. 아래 windows app에 있는 것을 누르면 MS Appstore에 있는 것을 다운 받는데, 이게 좀 이상하다. : MS 관리 좀 잘 했으면…)&lt;/p&gt;
+
+&lt;p&gt;다운을 받아서 설치하면 다음과 같은 프로그램이 실행된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703104-8ba1e000-83e2-11e9-8c4b-6775ef4ca142.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아무것도 없는 순수한 날 것의 프로그램이다. 아… 이걸로 뭘 하라는 말인가… 답답하다.&lt;/p&gt;
+
+&lt;p&gt;일단, 설치해서 실행은 했으니, 뭔가는 해야겠고..&lt;/p&gt;
+
+&lt;p&gt;usb 케이블을 이용해서 PC에 연결해보니, 불만 들어온다. 이거 뭔지…&lt;/p&gt;
+
+&lt;p&gt;연결이 된건지, 안된건지 알수가 없다. 이거 어떻게 확인하지? 방법이 있다. 자 보자.&lt;/p&gt;
+
+&lt;p&gt;윈도우의 장치관리자라는 것이 있다. 다들 한번 쯤은 본 적 있을 것이다. 내 컴퓨터에 어떤 장치들이 있는지 다 나온다.여기서 잘 보자. (설마 이거 보는 방법 모르는 사람 있다면, 인터넷에서 장치관리자 보는 법 찾아봐라. 다 나온다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703102-8ba1e000-83e2-11e9-98c6-72823d7b68b7.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 사진이 장치관리자이다.&lt;/p&gt;
+
+&lt;p&gt;여기서 보면, 포트(COM &amp;amp; LPT) 부분이 있다. 없는 분도 있다. 노트북 같은 경우, 내부적으로 COM Port나 LPT가 없을 경우 아무것도 표시 안된다. 자 이 상태에서 한번 arduino 보드를 뺐다가 꽂아보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703103-8ba1e000-83e2-11e9-93a8-8a0671db551c.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;포트(COM &amp;amp; LPT) 상세부분을 눌러보면 USB-SERIAL CH340(COMx)라고 나온다. 뭔가 잡혔다. 이게 바로 이야기한 arduino 호환품 보드의 USB chipset driver 이다. 싼 걸 샀으니, 드라이버깔고 쓸수밖에. 글쓴이를 이제부터 땜쟁이라 지칭하겠다. 땜쟁이의 PC에는 COM3로 나온다. 오~ 잡혔다. 자 그러면 이 창은 닫아두고, 다시 arduino IDE program을 열자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703104-8ba1e000-83e2-11e9-8c4b-6775ef4ca142.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아무것도 없는 날 것의 느낌… 참 암담하다. 이거 뭐하라는 거지? 하지만 연결까지 했으니, 동작이 되는지 안되는지 해봐야지 알겠지? 근데, 프로그램 짜는 건 해본 적도 없고 배운적도 없다. 이런 분들을 위해서 예제 프로그램이 들어있다. 친절하다. (감사해용. 마시모 벤지~!:아두이노 창시자이다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703099-8b094980-83e2-11e9-99a7-aa6fb549b8cb.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 그림을 예제를 로딩하는 화면이다. 똑 같이 해봐라.&lt;/p&gt;
+
+&lt;p&gt;!&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703106-8c3a7680-83e2-11e9-87cb-68c4e414712e.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;LED 하나를 깜박이는 가장 기초적인 예제이다. 흠~ 뭔가 있는 것 같다. (실상을 까보면 아무것도 아니다.)&lt;/p&gt;
+
+&lt;p&gt;일단, 로딩을 했으니, 다운로드를 해야하는데, 아까 봤던 포트가 생각났다. 맞다. COM3였다. 근데, 땜쟁이 arduino IDE에는 com9로 되어 있다. 이거 뭐야… 통신이 안될 것 같자나. 바꿔야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703105-8ba1e000-83e2-11e9-9682-8f18dad88e1a.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;com3을 선택하니, com3으로 바뀌었다. 오~ 신기하다. 자 뭔가 될 것 같은 느낌. 내친김에 다운로드까지 해 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;499&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58703101-8b094980-83e2-11e9-80aa-af30a5a74386.PNG&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;와~ 1초마다 한번 씩 LED가 깜박거린다. 된다~ 정말로 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/FWg_i2UVIjY&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/FWg_i2UVIjY/0.jpg&quot; alt=&quot;Video Label&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;뭔지는 모르지만 신기하다. 좀 더 빠르게 깜박거리게 하고 싶다. 내용 중에 뭔지는 잘 모르지만 delay(1000)라는 것이 있다. 이게 뭔가 1초 같은 느낌이다. 에라 한번 100으로 바꿔보자.&lt;/p&gt;
+
+&lt;p&gt;delay(1000) –&amp;gt; delay(100)으로 수정 (2개가 있다. 2개 다 수정해라. 하나만 하면 박자가 안 맞는다. 궁금하면 해봐라.)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/ZfRyvfUfXbk&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/ZfRyvfUfXbk/0.jpg&quot; alt=&quot;Video Label&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;우와~ 10배는 빨라졌다. 정말로. 신기하다. 급 피곤해졌다. 이번 실험은 여기까지. 왜 이렇게 되는 지는 다음에 다시 설명한다.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 31 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/arduino/2019/05/31/arduino-3.html</link>
+        <guid isPermaLink="true">http://localhost:4000/arduino/2019/05/31/arduino-3.html</guid>
+        
+        
+        <category>arduino</category>
+        
+      </item>
+    
+      <item>
+        <title>arduino uno~! 순정과 호환품, 뭐가 다르지?</title>
+        <description>&lt;p&gt;하드웨어를 잘 모르는 사람들도 사용할 수 있도록 만들어 논 보드~ arduino.&lt;/p&gt;
+
+&lt;p&gt;다들 이렇게 이야기 하는데, 하드웨어 모르는 사람은 이것도 어렵다. 정말로 어렵다. 사실 옛날에는 상상도 할 수 없는 것을 요즘은 다들 하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58686564-1e7a5480-83ba-11e9-9fe3-7f2b70dbe691.jpg&quot; alt=&quot;photo_2019-05-31_12-06-51&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 사진은 아두이노 uno R3의 오리지널 버전이다. 즉, 일명 정품이라 다들 이야기한다.&lt;/p&gt;
+
+&lt;p&gt;일단, 눈으로 붉은 네모박스부분을 확인해 두자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58686563-1de1be00-83ba-11e9-80e1-a87635f492db.jpg&quot; alt=&quot;photo_2019-05-31_12-06-48&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 사진도 arduino uno 이다. 하지만, 붉은 동그라미를 잘 보면 뭔가 다르다. 이건 흔히 말하는 호환품. 좋게 말해서 호환품이고 나쁘게 말하면 짝퉁이다. 하지만, 뭐 다 된다. 약간 손봐줘야 할 것이 있기는 하지만…&lt;/p&gt;
+
+&lt;p&gt;아두이노를 테스트 해 보려면, 당연히 아두이노를 구매해서 테스트 해야하지 않겠는가? 하지만, 인터넷에서 보면 가격이 천차만별, 종류도 많다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58686566-1e7a5480-83ba-11e9-8672-fdf2da3ed110.PNG&quot; alt=&quot;arduino_gen&quot; /&gt;
+자 보자. 위의 사진은 정품이다. 많이 가격이 내려가서 현재 25,000원 선이다. 아직 비싸다. 확실히 정품 pcb가 더 고급지다. (뭐 개인적인 사견이다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58686565-1e7a5480-83ba-11e9-9473-77ce6cc0fd1f.PNG&quot; alt=&quot;arduino_comp&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;요건 아두이노 우노 호환품이다. 이제부터는 짝퉁이라는 표현은 안 쓰겠다. 4,400원. 엄청난 가격이다. 도대체 pcb와 부품까지 다해서 이 가격은 거의 원가 수준인데, 이게 가능하다는 것이 믿겨지지 않는다. 정말 대륙은 대단하다.&lt;/p&gt;
+
+&lt;p&gt;자 그러면 어떤 것을 구매하겠는가? 당연히 싼거. 근데, 뭔가 다르자나? 뭐가 다른 지 지금부터 보자.&lt;/p&gt;
+
+&lt;p&gt;위에 사진에서 붉은 색으로 표시해 논 부분을 기억하는지? 차이점은 usb 연결 부분의 chipset의 차이이다.&lt;/p&gt;
+
+&lt;p&gt;순정품은 atmega16u2라는 mcu에 usb emulation code를 심어 놓았다. usb를 꽂으면 arduino IDE에서 자동으로 인식된다. 비싼만큼 편하다.&lt;/p&gt;
+
+&lt;p&gt;하지만, 호환품이라 하는 제품은 usb 부분에 ch340이라는 usb to serial chipset을 사용한다. 당연히 usb driver를 별도로 설치를 해 줘야 하는 불편함이 있다. (설치 안해주면 인식 안된다.)&lt;/p&gt;
+
+&lt;p&gt;한번만 설치하면 그 담부턴 순정품이랑 똑 같이 쓸 수 있다. 어떤 것을 사겠는가? 25,000원? 4,400원? 나라면 싼 거 산다. 참고로 ch340의 다운로드 링크주소는 여기다. &lt;a href=&quot;http://www.wch.cn/download/CH341SER_EXE.html&quot;&gt;CH340 driver&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;사실 호환품이 하나가 더 있다. USB chip을 CH340이 아닌, FT232를 사용하는 제품이 하나 더 있으나, 이건 win7 이상에서 자동으로 드라이버가 설치된다. (usb to serial chip 중에서는 범용적으로 사용되기 때문에 드라이버가 자동으로 설치되는 장점이 있다.) 하지만, CH340 보다 아두이노 보드 가격이 좀 더 비싸다. 불편하니 조금 더 돈 더주고 사실 분들은 사셔도 무방하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/20354551/58686562-1de1be00-83ba-11e9-8684-d9879c4e334f.PNG&quot; alt=&quot;ch340_ft232&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자 보라. 약간 더 비싸다. 하지만, 온라인 스토어에서 찾기가 쉽지 않다. 이건 알아서 발품 팔아서 구매하시길.&lt;/p&gt;
+
+&lt;p&gt;(그 사이 CH340은 더 싸졌네… 도대체 이거 얼마까지 내려가는 지 알 수가 없네..)&lt;/p&gt;
+</description>
+        <pubDate>Fri, 31 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/arduino/2019/05/31/arduino-2.html</link>
+        <guid isPermaLink="true">http://localhost:4000/arduino/2019/05/31/arduino-2.html</guid>
+        
+        
+        <category>arduino</category>
+        
+      </item>
+    
+      <item>
+        <title>arduino란 무엇인가?</title>
+        <description>&lt;p&gt;아주 옛날 신입사원 시절, 선배에게 모르는 것을 물어보면서 하드웨어를 만들고, 코딩을 하고 테스트 환경을 만들면서 밤을 새웠던 적이 있었다. 그 때는 개발 키트나 이런 환경이 많지 않았고, 자료도 많지 않아서 도서관에 가서 자료를 찾거나, 지인들에게 물어가면서 개발을 하곤 했다. (그 흔한 TTL 소자 책도 보물로 여기던 시절이었다.)&lt;/p&gt;
+
+&lt;p&gt;하지만, 요즘은 정말로 인터넷에서 자료를 찾으면 뭐든 어디서든 찾을 수 있다. 정말로 좋은 세상이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;720&quot; alt=&quot;arduino uno&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58608433-7b084180-82de-11e9-8801-fb2f34721a41.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;arduino는 실무를 하던 도중 알게된 것이지만, 취미생활로 이것저것 많이 해 보고 있다. 정말로 좋은 장난감이다.&lt;/p&gt;
+
+&lt;p&gt;예전 공업고등학교에서 강의를 했던 자료를 바탕으로 조금씩 arduino에 대한 이야기를 하고자 한다.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 30 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/arduino/2019/05/30/arduino-1.html</link>
+        <guid isPermaLink="true">http://localhost:4000/arduino/2019/05/30/arduino-1.html</guid>
+        
+        
+        <category>arduino</category>
+        
+      </item>
+    
+      <item>
+        <title>mac에서 sublime text3 설치</title>
+        <description>&lt;p&gt;항상 windows pc만 업무용으로 사용하다가, mac pc를 사용할 기회가 생겼다.&lt;/p&gt;
+
+&lt;p&gt;mac은 뭐랄까, 굉장히 직관적이고, 사용하기가 편리하게 되어있다. 또한, linux를 지금까지 계속 사용해 왔기 때문에, unix 명령에 대한 거부감은 전혀 없는 상태이다.&lt;/p&gt;
+
+&lt;p&gt;우선 windows에서 항상 사용했던 sublime text가 없어서, 이것부터 설치하기로 했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.sublimetext.com/3&quot;&gt;sublimetext3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 사이트를 접속하면 다음과 같은 화면이 나온다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;720&quot; alt=&quot;스크린샷 2019-05-28 오전 12 10 36&quot; src=&quot;https://user-images.githubusercontent.com/20354551/58429210-1a131a80-80e0-11e9-80f1-0f9e87a6e71d.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 화면에서 보면 OS X용이 나온다.&lt;/p&gt;
+
+&lt;p&gt;클릭해서 다운 받은 dmg 파일을 클릭해서 설치 후, 응용프로그램에 옮겨 놓으면 된다. 간단하다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 하면 window에서 사용하던 sublime text3를 편하게 사용할 수 있다.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 27 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/web/mac/2019/05/27/sublimetext.html</link>
+        <guid isPermaLink="true">http://localhost:4000/web/mac/2019/05/27/sublimetext.html</guid>
+        
+        
+        <category>web</category>
+        
+        <category>mac</category>
+        
+      </item>
+    
+      <item>
+        <title>처음으로 포스팅을 하며...</title>
+        <description>&lt;p&gt;github에 개발자료를 하나씩 업데이트 하던 중, gitgub에서 블로그가 가능하다는 것을 알게 되었다.
+hardware나 firmware에 관한 것은 익숙한 것이라 잘 알지만, 웹 분야에 대해서는 아직 초보의 단계라 많이 부족하다.
+하나씩 공부하면서 해볼 생각이다.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 27 May 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/normal/2019/05/27/first-posting.html</link>
+        <guid isPermaLink="true">http://localhost:4000/normal/2019/05/27/first-posting.html</guid>
+        
+        
+        <category>normal</category>
+        
+      </item>
+    
+  </channel>
+</rss>
