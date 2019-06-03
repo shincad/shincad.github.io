@@ -16,7 +16,7 @@ arduino를 본격적으로 한번 해 보고 싶은데, 개발환경이며 특�
 
 [stino download site](https://github.com/Robot-Will/Stino)
 
- 위의 링크를 눌러보면 stino라는 github로 접속이 된다. 여기 들어가서 stino를 다운받는다.
+ 위의 링크를 눌러보면 stino라는 github로 접속이 된다. 여기 들어가서 **stino**를 다운받는다.
 
 ![sublime-text-3 0](https://user-images.githubusercontent.com/20354551/58773375-c6c92c80-85f7-11e9-94ab-843326cb76d0.png)
 
@@ -26,7 +26,7 @@ arduino를 본격적으로 한번 해 보고 싶은데, 개발환경이며 특�
 
 ![menu](https://user-images.githubusercontent.com/20354551/58773484-29bac380-85f8-11e9-85df-530ae3d84826.PNG)
 
-preferences --> browse packages를 선택하면, 윈도우 창이 하나 나온다. 바로 package 들을 설치할 때 저장하는 방이다. 여기에 아까 다운받은 stino를 압축을 풀어서 넣는다. (간단하다. mac도 동일하게 하면 된다.)
+**preferences --> browse packages**를 선택하면, 윈도우 창이 하나 나온다. 바로 package 들을 설치할 때 저장하는 방이다. 여기에 아까 다운받은 stino를 압축을 풀어서 넣는다. (간단하다. mac도 동일하게 하면 된다.)
 
 그리고 sublime text3를 닫았다가 다시 실행한다.
 
