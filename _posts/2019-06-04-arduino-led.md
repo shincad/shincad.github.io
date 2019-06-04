@@ -66,7 +66,7 @@ categories: arduino
 
 요게 회로도 이다. fritzing은 회로도도 귀엽다. 자, 그러면  동영상 한번 보자.
 
-[![Video Label](http://img.youtube.com/vi/KZuh8WjzvwE/0.jpg)](https://youtu.be/KZuh8WjzvwE
+[![Video Label](http://img.youtube.com/vi/KZuh8WjzvwE/0.jpg)](https://youtu.be/KZuh8WjzvwE)
 
 화면 클릭~!
 
@@ -74,7 +74,7 @@ categories: arduino
 
 감이 안오는 분들을 위해, 그냥 **On/Off** 동영상 나간다.
 
-[![Video Label](http://img.youtube.com/vi/I6OJRZWipEY/0.jpg)](https://youtu.be/I6OJRZWipEY
+[![Video Label](http://img.youtube.com/vi/I6OJRZWipEY/0.jpg)](https://youtu.be/I6OJRZWipEY)
 
 자~ 완전히 다르지 않은가? 이것이 그냥 On/Off이다.
 
@@ -166,7 +166,7 @@ void loop()
 
 소스는 그저 단순한 것이 최고다. 아주 단순하게 했다. 요걸 업로드하면 다음과 같이 된다.
 
-[![Video Label](http://img.youtube.com/vi/lPV56SrvBsM/0.jpg)](https://youtu.be/lPV56SrvBsM
+[![Video Label](http://img.youtube.com/vi/lPV56SrvBsM/0.jpg)](https://youtu.be/lPV56SrvBsM)
 
 화면 클릭~!
 
