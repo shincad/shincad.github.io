@@ -9,7 +9,7 @@ categories: web japanese
 
 いつもwindows pcだけ業務用で使用したが、mac pcを使用する機会ができた。
 
-macはなんか、すごく直感的だし、しやすくなってる感じ。その上、linuxを今までずっと使ってるからunix命令に違和感は全然ない。
+macはなんか、すごく直感的だし、使いやすい感じ。その上、linuxを今までずっと使ってるからunix命令に違和感は全然ない。
 
 まず、windowsでいつも使用したsublime textがなくて、これからインストール予定。
 
