@@ -1,8 +1,10 @@
+---
 layout: post
 title:  "arduinoって何？"
 date:   2019-06-14
 comments: true
 categories: arduino japanese
+---
 
 昔、新入社員の時、先輩に知らないことを聞きながらhardwareを作って、codingをしてテスト環境を作りながら夜更かしした時があった。その時は開発のKITとかそんなものがあんまりなかったし、資料も多くないから図書館で資料を探したり、隣の人に聞いたりして開発した。（今はどこでも見れるTTL CHIPの本もその時は凄い宝物だった。）
 
