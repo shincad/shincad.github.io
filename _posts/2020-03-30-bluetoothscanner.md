@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "mac에서 python flask / mysql 설치"
+title:  "스마트서가 Bluetooth Scanner 설정방법"
 date:   2020-03-12
 comments: true
 categories: company work
