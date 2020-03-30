@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "스마트서가 Bluetooth Scanner 설정방법"
-date:   2020-03-12
+date:   2020-03-30
 comments: true
 categories: company work
 ---
