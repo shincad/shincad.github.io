@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "raspberry pi iamge file size 줄이는 방법"
+title:  "raspberry pi image file size 줄이는 방법"
 date:   2020-03-30
 comments: true
 categories: companywork
